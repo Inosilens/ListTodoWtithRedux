@@ -15,7 +15,8 @@ export default function todoListAction (state = defaultState,action){
         case ADD_TODO : return {...state,todos:[...state.todos,action.payload]}
         case REMOVE_TODO : return {...state, todos: state.todos.filter(item=> item.id !==action.payload)}
         case GET_INPUT_VALUE : return {...state,inputValue: action.payload}
-        case TODOS_COMPLETE : return {...state,complete:[...state.todos,]}
+        case TODOS_COMPLETE : return {...state, todos:state.todos.map(item=>item.id===action.payload?
+                {...item, complete: true} : item)}
 
 
 

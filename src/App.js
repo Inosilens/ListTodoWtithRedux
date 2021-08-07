@@ -1,13 +1,13 @@
 import "./App.css"
 import {useDispatch, useSelector} from "react-redux";
-import {actionGetInput, actionRemoveTodo, actionTodoAdd} from "./redux/action/todoListAction";
+import {actionChangeComplete, actionGetInput, actionRemoveTodo, actionTodoAdd} from "./redux/action/todoListAction";
 
 
 function App() {
     const dispath = useDispatch()
     const todoList = useSelector(state=>state.todos.todos)
     const inputValue = useSelector(state=>state.todos.inputValue)
-    const complete = useSelector(state=>state.todos.complete)
+    const complete = useSelector(state=>state.todos)
 
     const changeInput = (e) =>{
         e.preventDefault()
@@ -25,7 +25,7 @@ function App() {
 
     }
     const changeComplete = (e) => {
-        console.log(e)
+        dispath((actionChangeComplete(e.id)))
 
     }
 
@@ -38,7 +38,7 @@ function App() {
         <div className=" pt-3 d-flex flex-column  justify-content-between">
             {todoList.map((item,index)=>
                 <ul key={index} className=" todo__container d-flex flex-row align-items-center justify-content-between">
-                <li onClick={()=>changeComplete(index)} >{item.name}</li>
+                <li className={item.complete ?"complete":""} onClick={()=>changeComplete(item)} >{item.name}</li>
                     <div>
                 <button  className="btn btn-danger" onClick={()=>deleteTodos(item)}>Delete</button>
                     </div>

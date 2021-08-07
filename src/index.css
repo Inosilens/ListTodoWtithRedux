@@ -1,0 +1,11 @@
+.todo__container{
+  width: 300px;
+  max-width: 500px;
+}
+body{
+  background: #eeee9f;
+  margin: 0 auto;
+}
+ul{
+ list-style: none;
+}

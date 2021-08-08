@@ -40,7 +40,7 @@ function App() {
                 <ul key={index} className=" todo__container d-flex flex-row align-items-center justify-content-between">
                 <li className={item.complete ?"complete":""} onClick={()=>changeComplete(item)} >{item.name}</li>
                     <div>
-                <button  className="btn btn-danger" onClick={()=>deleteTodos(item)}>Delete</button>
+                <button  className="btn btn_delete" onClick={()=>deleteTodos(item)}>Delete</button>
                     </div>
                 </ul>) }
         </div>
